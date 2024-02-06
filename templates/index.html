@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Report</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Report Finder</h1>
+        <form method="POST">
+            <label for="stockSelect">Select a Stock:</label>
+            <select id="stockSelect" name="stock">
+                {% for name, ticker in stocks.items() %}
+                <option value="{{ ticker }}">{{ name }} ({{ ticker }})</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Get Report</button>
+        </form>
+        {% if report %}
+        <div id="report">{{ report }}</div>
+        {% endif %}
+    </div>
+</body>
+</html>
